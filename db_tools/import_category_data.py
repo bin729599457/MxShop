@@ -1,5 +1,5 @@
  # -*- coding: utf-8 -*-
-__author__ = 'bobby'
+__author__ = 'binbin'
 
 #独立使用django的model
 import sys
