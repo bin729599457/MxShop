@@ -25,7 +25,7 @@ for goods_detail in row_data:
     goods.goods_front_image = goods_detail["images"][0] if goods_detail["images"] else ""
 
     category_name = goods_detail["categorys"][-1]
-    category = GoodsCategory.objects.filter(name=category_name)
+    category = GoodsCategory.objects.filter(name=category_name)#filter若无数据返回空数组，不需要try/catch
     if category:
         goods.category = category[0]
     goods.save()
