@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'DjangoUeditor',
     'goods.apps.GoodsConfig',
     'trade.apps.TradeConfig',
-    'user_operation.apps.UserOperationConfig'
+    'user_operation.apps.UserOperationConfig',
+    'xadmin'
 ]
 
 MIDDLEWARE = [
