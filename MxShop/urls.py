@@ -18,8 +18,12 @@ import xadmin
 from django.views.static import serve
 from MxShop.settings import MEDIA_ROOT
 
+from goods.views_base import GoodsListView
 
 urlpatterns = [
     url(r'^xadmin/',xadmin.site.urls),
     url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
+
+    #商品列表页   as_view()方法让你可以把类当做函数来调用
+    url(r'goods/$',GoodsListView.as_view(),name="goods-list")
 ]
