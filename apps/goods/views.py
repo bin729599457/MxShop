@@ -17,6 +17,11 @@ from .serializers import GoodsSerializer, CategorySerializer, HotWordsSerializer
 from .serializers import IndexCategorySerializer
 # Create your views here.
 
+class GoodsListView(mixins.ListModelMixin):
+    def get(self,request,fomat=None):
+        goods=Goods.objects.all()[:10]
+        goods_serializer=GoodsSerializer(goods,many=True)
+        return Response(goods_serializer.data)
 
 class GoodsPagination(PageNumberPagination):
     page_size = 12
@@ -32,6 +37,9 @@ class GoodsListViewSet(CacheResponseMixin, mixins.ListModelMixin, mixins.Retriev
     # throttle_classes = (UserRateThrottle, )
     queryset = Goods.objects.all()
     serializer_class = GoodsSerializer
+    '''
+    商品分页
+    '''
     pagination_class = GoodsPagination
     # authentication_classes = (TokenAuthentication, )
     filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter)
